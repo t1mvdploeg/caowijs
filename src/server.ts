@@ -31,7 +31,7 @@ export function maakServer(paginas: Pagina[]): McpServer {
   const alleenLezen = { readOnlyHint: true, openWorldHint: false };
 
   const server = new McpServer(
-    { name: "cao-connector", version: "0.1.0" },
+    { name: "caowijs", version: "0.1.0" },
     { instructions: INSTRUCTIES },
   );
 

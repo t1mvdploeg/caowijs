@@ -1,5 +1,5 @@
 {
-  "name": "cao-connector",
+  "name": "caowijs",
   "version": "0.1.0",
   "description": "MCP-server die een kennisbank over de Cao voor Uitzendkrachten doorzoekbaar maakt voor Claude, met de bron bij elk antwoord.",
   "type": "module",

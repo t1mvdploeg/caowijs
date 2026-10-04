@@ -7,10 +7,10 @@ import { maakServer } from "./server.ts";
 try {
   const paginas = laadKennisbank(join(import.meta.dirname, "..", "kennis"));
   await maakServer(paginas).connect(new StdioServerTransport());
-  console.error(`cao-connector: ${paginas.length} pagina's geladen`);
+  console.error(`caowijs: ${paginas.length} pagina's geladen`);
 } catch (fout) {
   console.error(
-    `cao-connector kan niet starten: ${fout instanceof Error ? fout.message : fout}`,
+    `caowijs kan niet starten: ${fout instanceof Error ? fout.message : fout}`,
   );
   process.exit(1);
 }

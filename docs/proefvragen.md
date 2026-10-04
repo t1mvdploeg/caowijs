@@ -1,6 +1,6 @@
 # Proefvragen
 
-Drie echte vragen, op 4 oktober 2026 gesteld aan Claude (model Sonnet) met alleen de Cao-connector gekoppeld. De antwoorden staan hier onbewerkt.
+Drie echte vragen, op 4 oktober 2026 gesteld aan Claude (model Sonnet) met alleen Caowijs gekoppeld. De antwoorden staan hier onbewerkt.
 
 Waar op is gelet: noemt het antwoord een bron met een werkende link, klopt het feit met de pagina in `kennis/`, en benoemt het een open vraag als open vraag. Bij alle drie was dat het geval. Bij de tweede vraag spreken de bronnen elkaar tegen, en het antwoord zegt dat ook.
 

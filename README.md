@@ -1,18 +1,18 @@
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/logo-donker.svg">
-    <img src="assets/logo.svg" alt="Cao-connector" width="120">
+    <img src="assets/logo.svg" alt="Caowijs" width="120">
   </picture>
 </p>
 
-<h1 align="center">Cao-connector</h1>
+<h1 align="center">Caowijs</h1>
 
 <p align="center">
   Laat Claude vragen over de Cao voor Uitzendkrachten beantwoorden, met de bron erbij.
 </p>
 
 <p align="center">
-  <a href="https://github.com/t1mvdploeg/cao-connector/actions/workflows/test.yml"><img src="https://github.com/t1mvdploeg/cao-connector/actions/workflows/test.yml/badge.svg" alt="tests"></a>
+  <a href="https://github.com/t1mvdploeg/caowijs/actions/workflows/test.yml"><img src="https://github.com/t1mvdploeg/caowijs/actions/workflows/test.yml/badge.svg" alt="tests"></a>
   <img src="https://img.shields.io/badge/node-%E2%89%A5%2022.18-339933" alt="Node 22.18 of hoger">
   <img src="https://img.shields.io/badge/licentie-MIT-blue" alt="MIT-licentie">
 </p>
@@ -28,9 +28,9 @@ Het is een MCP-server: een klein programma op je eigen computer waarmee Claude z
 Je hebt Node 22.18 of hoger nodig.
 
 ```bash
-git clone https://github.com/t1mvdploeg/cao-connector.git
-cd cao-connector && npm install
-claude mcp add cao -- node "$PWD/src/start.ts"
+git clone https://github.com/t1mvdploeg/caowijs.git
+cd caowijs && npm install
+claude mcp add caowijs -- node "$PWD/src/start.ts"
 ```
 
 Stel daarna in Claude Code een vraag over de cao. In de Claude-app voeg je dezelfde server toe in het bestand met MCP-servers, met het volledige pad naar `src/start.ts`.
