@@ -1,0 +1,101 @@
+[
+  { "vraag": "Hoeveel moet ik een uitzendkracht van 21 jaar of ouder minimaal per uur betalen sinds de verhoging van deze zomer?", "pagina": "minimumloon" },
+  { "vraag": "Een uitzendkracht van 19 begint in augustus dit jaar bij ons, wat moet ik hem minimaal per uur betalen?", "pagina": "minimumloon" },
+  { "vraag": "Mag ik de reiskostenvergoeding meetellen om op het minimumloon uit te komen?", "pagina": "minimumloon" },
+
+  { "vraag": "Wat is eigenlijk het verschil tussen basisloon en gebruikelijk loon?", "pagina": "basisloon-en-ikb" },
+  { "vraag": "Een uitzendkracht wil dat er 200 euro per maand van zijn uitbetaling in een potje gaat waar hij zelf over beslist, mag dat?", "pagina": "basisloon-en-ikb" },
+  {
+    "vraag": "Het werk van een uitzendkracht valt weg en we moeten loon doorbetalen, over welk bedrag rekenen we dat dan?",
+    "pagina": "basisloon-en-ikb",
+    "ook": ["fasen-contracten-en-uitzendbeding", "vakantie-feestdagen-ziekte-en-verlof"]
+  },
+
+  { "vraag": "Voor welke uitzendkrachten is de ET-regeling bedoeld?", "pagina": "et-regeling" },
+  { "vraag": "Hoeveel van het brutoloon van een buitenlandse uitzendkracht mag ik maximaal inhouden voor zijn huisvesting en de reis naar huis?", "pagina": "et-regeling" },
+  { "vraag": "Sinds dit jaar mag ik gas, licht en bellen naar het thuisland van een arbeidsmigrant niet meer onbelast vergoeden, klopt dat?", "pagina": "et-regeling" },
+
+  {
+    "vraag": "Hoeveel gewerkte weken duurt fase A van een uitzendkracht?",
+    "pagina": "fasen-contracten-en-uitzendbeding",
+    "ook": ["wet-meer-zekerheid-flexwerkers"]
+  },
+  { "vraag": "Een uitzendkracht werkt al twee jaar bij ons via verschillende contracten, mag ik hem nog een uitzendbeding geven?", "pagina": "fasen-contracten-en-uitzendbeding" },
+  {
+    "vraag": "Na hoeveel maanden zonder werk begint de telling van de fases bij een uitzendkracht opnieuw?",
+    "pagina": "fasen-contracten-en-uitzendbeding",
+    "ook": ["wet-meer-zekerheid-flexwerkers"]
+  },
+
+  { "vraag": "Moet een uitzendkracht hetzelfde krijgen als de vaste medewerkers bij de klant waar hij werkt?", "pagina": "gelijkwaardige-beloning" },
+  { "vraag": "Mijn uitzendkracht krijgt een lager uurloon dan de vaste collega bij de klant, mag ik dat goedmaken met een goede pensioenregeling?", "pagina": "gelijkwaardige-beloning" },
+  { "vraag": "Hoe vraag ik bij een klant op wat zijn eigen mensen aan arbeidsvoorwaarden krijgen?", "pagina": "gelijkwaardige-beloning" },
+
+  { "vraag": "Hoeveel procent van de factuur moet ik op de g-rekening storten om als klant volledig beschermd te zijn bij een bureau met SNA-keurmerk?", "pagina": "inlenersaansprakelijkheid" },
+  { "vraag": "Het uitzendbureau waar wij van inlenen betaalt de loonheffingen niet, kan de Belastingdienst dan bij ons aankloppen?", "pagina": "inlenersaansprakelijkheid" },
+  { "vraag": "Mijn uitzendbureau betaalt mijn loon niet meer, kan ik mijn geld dan halen bij het bedrijf waar ik werk?", "pagina": "inlenersaansprakelijkheid" },
+
+  { "vraag": "Hoe lang is de opzegtermijn als wij een medewerker na zeven jaar dienst willen laten gaan?", "pagina": "ontslag-opzegtermijn-en-transitievergoeding" },
+  { "vraag": "Hoe lang mag de proeftijd zijn bij een contract voor een jaar?", "pagina": "ontslag-opzegtermijn-en-transitievergoeding" },
+  {
+    "vraag": "Wat krijgt een uitzendkracht aan transitievergoeding die vier jaar bij ons in dienst was en 3.000 euro per maand verdiende?",
+    "pagina": "ontslag-opzegtermijn-en-transitievergoeding",
+    "ook": ["fasen-contracten-en-uitzendbeding"]
+  },
+
+  { "vraag": "Wat is PAWW en moet mijn uitzendbureau daaraan meedoen?", "pagina": "paww" },
+  { "vraag": "Hoeveel procent van het loon wordt dit jaar ingehouden voor de PAWW en wie betaalt dat, het bureau of de uitzendkracht?", "pagina": "paww" },
+  { "vraag": "Wanneer moet ik de aangifte voor de PAWW gedaan hebben en betaald?", "pagina": "paww" },
+
+  { "vraag": "Hoeveel pensioenpremie moet ik in totaal afdragen voor een uitzendkracht en hoeveel daarvan mag ik op zijn loon inhouden?", "pagina": "pensioen-stipp-en-compensatie" },
+  {
+    "vraag": "Een uitzendkracht van 17 begint bij ons, bouwt hij dan al pensioen op?",
+    "pagina": "pensioen-stipp-en-compensatie",
+    "ook": ["stipp-administratie-en-aanlevering"]
+  },
+  { "vraag": "De klant heeft een betere pensioenregeling dan wij, moet ik het verschil bijbetalen en hoe reken ik dat uit?", "pagina": "pensioen-stipp-en-compensatie" },
+
+  { "vraag": "Hoe hoog is de WW-premie die ik als werkgever betaal over een uitzendkracht met een contract voor bepaalde tijd?", "pagina": "premies-werknemersverzekeringen" },
+  { "vraag": "Moet ik de hoge WW-premie betalen voor een uitzendkracht die een uitzendbeding heeft?", "pagina": "premies-werknemersverzekeringen" },
+  { "vraag": "Tot welk bedrag aan loon per maand betaal ik in 2026 premie voor de werknemersverzekeringen?", "pagina": "premies-werknemersverzekeringen" },
+
+  { "vraag": "Wat moet ons uitzendbureau dit jaar betalen aan het sociaal fonds van de branche?", "pagina": "sfu-en-sociaal-fonds" },
+  { "vraag": "Mag ik de bijdrage voor het sociaal fonds op het loon van de uitzendkracht inhouden?", "pagina": "sfu-en-sociaal-fonds" },
+  { "vraag": "Waar wordt het geld uit het sociaal fonds van de uitzendbranche aan besteed?", "pagina": "sfu-en-sociaal-fonds" },
+
+  { "vraag": "Welke stukken moet mijn bureau aanleveren als de SNCU een onderzoek bij ons begint?", "pagina": "sncu-naleving-en-controle" },
+  { "vraag": "Kan de eigenaar van een uitzendbureau privé aansprakelijk gesteld worden als het bureau de cao niet naleeft?", "pagina": "sncu-naleving-en-controle" },
+  { "vraag": "De SNCU heeft afwijkingen bij ons gevonden, hoeveel tijd hebben we om de loonverschillen terug te betalen?", "pagina": "sncu-naleving-en-controle" },
+
+  { "vraag": "Voor welke datum moet ik de loongegevens over januari aanleveren bij StiPP?", "pagina": "stipp-administratie-en-aanlevering" },
+  { "vraag": "Een medewerker is uit dienst gegaan, hoe meld ik hem af bij het pensioenfonds?", "pagina": "stipp-administratie-en-aanlevering" },
+  { "vraag": "Wat gebeurt er als ik de pensioenfactuur van StiPP te laat betaal?", "pagina": "stipp-administratie-en-aanlevering" },
+
+  { "vraag": "Hoeveel mag ik per gereden kilometer onbelast vergoeden aan een uitzendkracht die met zijn eigen auto komt?", "pagina": "toeslagen-overwerk-en-reiskosten" },
+  { "vraag": "Krijgt een uitzendkracht automatisch een periodieke loonsverhoging, of moet er eerst een beoordeling van de klant komen?", "pagina": "toeslagen-overwerk-en-reiskosten" },
+  { "vraag": "Een uitzendkracht heeft vorige week veel overgewerkt, mag ik die uren in tijd teruggeven in plaats van uitbetalen?", "pagina": "toeslagen-overwerk-en-reiskosten" },
+
+  { "vraag": "Op hoeveel vakantiedagen heeft een uitzendkracht die volledig werkt minimaal recht per jaar?", "pagina": "vakantie-feestdagen-ziekte-en-verlof", "ook": ["gelijkwaardige-beloning", "basisloon-en-ikb"] },
+  { "vraag": "Een uitzendkracht wordt vanochtend ziek, wanneer en bij wie moet hij dat melden?", "pagina": "vakantie-feestdagen-ziekte-en-verlof" },
+  { "vraag": "Een uitzendkracht werkt altijd op donderdag, krijgt hij Hemelvaartsdag dan doorbetaald?", "pagina": "vakantie-feestdagen-ziekte-en-verlof" },
+
+  { "vraag": "Per wanneer gaat de nieuwe wet voor flexwerkers in?", "pagina": "wet-meer-zekerheid-flexwerkers" },
+  {
+    "vraag": "Wat verandert er straks voor uitzendkrachten die al langer dan een jaar bij ons werken, wat betreft het aantal contracten en de totale duur?",
+    "pagina": "wet-meer-zekerheid-flexwerkers",
+    "ook": ["fasen-contracten-en-uitzendbeding"]
+  },
+  { "vraag": "Heeft de Eerste Kamer de wet voor meer zekerheid van flexwerkers al aangenomen?", "pagina": "wet-meer-zekerheid-flexwerkers" },
+
+  { "vraag": "Per wanneer mag een uitzendbureau niet meer uitlenen zonder officiële toelating?", "pagina": "wtta" },
+  { "vraag": "Wij zijn een startend uitzendbureau, hoeveel waarborgsom moeten we betalen?", "pagina": "wtta" },
+  {
+    "vraag": "Moet ik als klant nagaan of het bureau waar ik van inleen is toegelaten, en waar kijk ik dat na?",
+    "pagina": "wtta",
+    "ook": ["inlenersaansprakelijkheid"]
+  },
+
+  { "vraag": "Hoe lang duurt de inspectie voor de toelating en hoeveel dossiers van uitzendkrachten worden bekeken?", "pagina": "wtta-normenkader" },
+  { "vraag": "De inspecteur heeft afwijkingen gevonden bij ons bureau, hoeveel tijd krijgen we om dat te herstellen?", "pagina": "wtta-normenkader" },
+  { "vraag": "Welke gegevens over de beloning van de klant moet een uitzendbureau volgens de ABU minimaal verzamelen?", "pagina": "wtta-normenkader" }
+]
