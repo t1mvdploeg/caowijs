@@ -1,0 +1,28 @@
+{
+  "name": "cao-connector",
+  "version": "0.1.0",
+  "description": "MCP-server die een kennisbank over de Cao voor Uitzendkrachten doorzoekbaar maakt voor Claude, met de bron bij elk antwoord.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Tim van der Ploeg",
+  "engines": { "node": ">=22.18" },
+  "scripts": {
+    "start": "node src/start.ts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "meet": "node evals/meet.ts",
+    "publiceer": "node scripts/publiceer-kennis.ts",
+    "format": "prettier --write src scripts tests evals",
+    "format:check": "prettier --check src scripts tests evals"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.0",
+    "zod": "^4.5.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.4",
+    "prettier": "^3.0.0",
+    "typescript": "^5.9.0",
+    "vitest": "^3.0.0"
+  }
+}
