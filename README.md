@@ -33,7 +33,7 @@ cd cao-connector && npm install
 claude mcp add cao -- node "$PWD/src/start.ts"
 ```
 
-Stel daarna in Claude Code een vraag over de cao. Voor de Claude-app zet je dezelfde opdracht in het bestand met MCP-servers.
+Stel daarna in Claude Code een vraag over de cao. In de Claude-app voeg je dezelfde server toe in het bestand met MCP-servers, met het volledige pad naar `src/start.ts`.
 
 ## Voorbeeld
 
@@ -73,7 +73,7 @@ flowchart LR
 
 - **De kennis** staat in [`kennis/`](kennis/): 18 pagina's in gewone markdown, elk met de vaste opbouw Kern, Details, Historie, Open vragen en Bronnen. Elke feitelijke bewering heeft een link naar de bron.
 - **De server** leest die pagina's bij het starten en deelt ze op in stukken: per kop, en daarbinnen per opsommingspunt, alinea of tabel.
-- **Zoeken** gaat op trefwoorden met BM25, de gangbare formule waarbij een zeldzaam woord zwaarder telt dan een veelvoorkomend woord. Een zoekwoord vindt ook samenstellingen: "vergoeding" vindt "transitievergoeding".
+- **Zoeken** gaat op trefwoorden met BM25, de gangbare formule waarbij een zeldzaam woord zwaarder telt dan een veelvoorkomend woord. Een zoekwoord vindt ook samenstellingen: "vergoeding" vindt "transitievergoeding". Het vindt dus ook een woord binnen een ander woord; dat helpt bij samenstellingen en geeft enkele valse treffers bij korte woorden.
 
 De server leest alleen. Hij heeft geen sleutels nodig en maakt geen verbinding met internet.
 
@@ -83,7 +83,7 @@ Zoeken op betekenis vraagt een extern model of een download, en geeft bij een ni
 
 ## Gemeten kwaliteit
 
-In [`evals/vragen.json`](evals/vragen.json) staan 54 vragen in gewone taal, elk met de pagina waar het antwoord hoort te staan. Ze zijn geschreven voordat de zoekfunctie bestond.
+In [`evals/vragen.json`](evals/vragen.json) staan 54 vragen in gewone taal, elk met de pagina waar het antwoord hoort te staan. Ze zijn geschreven voordat de zoekfunctie bestond. De meeste vragen zijn gesteld vanuit het uitzendbureau (intercedent, back office); weinig vanuit de uitzendkracht.
 
 | Meting | Score |
 | --- | --- |
@@ -100,7 +100,7 @@ In [`evals/vragen.json`](evals/vragen.json) staan 54 vragen in gewone taal, elk 
 
 ## Hoe de kennisbank is gemaakt
 
-De pagina's zijn samenvattingen van openbare bronnen. Per groep pagina's schreef één AI-agent de tekst; daarna zocht een tweede agent, die de tekst niet had geschreven, elke bewering terug in de bron. Die tweede ronde verbeterde ongeveer één op de zes beweringen, meestal een weggelaten voorwaarde. De opdrachten die de agents kregen staan in [`docs/werkwijze/`](docs/werkwijze/).
+De pagina's zijn samenvattingen van openbare bronnen. Per groep pagina's schreef één AI-agent de tekst; daarna zocht een tweede agent, die de tekst niet had geschreven, elke bewering terug in de bron. Die tweede ronde verbeterde ongeveer één op de zes beweringen, meestal een weggelaten voorwaarde (de telling staat in [`docs/werkwijze/uitkomst.md`](docs/werkwijze/uitkomst.md)). De opdrachten die de agents kregen staan in [`docs/werkwijze/`](docs/werkwijze/).
 
 Rangorde van bronnen: wetstekst, dan de cao-tekst, dan de instantie die iets vaststelt of uitvoert, dan uitleg van derden.
 
