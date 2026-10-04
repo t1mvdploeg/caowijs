@@ -1,0 +1,126 @@
+# Ontwerp: Cao-connector
+
+Datum: 2026-10-04. Status: ontwerp in gesprek goedgekeurd door Tim; deze spec wacht op zijn review.
+
+## Doel
+
+Een MCP-server (een koppeling waarmee Claude zelf een bron kan raadplegen) die de cao-kennisbank doorzoekbaar maakt. Na het koppelen kan elke Claude-sessie een vraag over de Cao voor Uitzendkrachten 2026-2028 beantwoorden met een link naar de bron.
+
+Het project heeft twee lezers:
+
+- **Tim zelf**, die de connector lokaal gebruikt bij vragen over de cao.
+- **Iemand die Tims portfolio bekijkt.** Die moet in een minuut zien wat het is, het in drie commando's kunnen starten, en kunnen nalezen hoe de kwaliteit is gemeten.
+
+Geslaagd is het als: de server lokaal draait en aan Claude Code gekoppeld is, de testvragen de afgesproken score halen, er niets geheims in de openbare map staat, en de repo er verzorgd uitziet.
+
+## Besluiten van Tim
+
+- De connector draait alleen lokaal. Geen hosting.
+- De 18 samenvattingen gaan mee in de openbare repo. De pagina's `kostprijselementen.md` (tabellen letterlijk van ABU) en `toetsing-parameters.md` (waarden uit een intern hulpmiddel van de auteur) niet.
+- Het moet er professioneel uitzien, met een eigen logo. Het is een portfoliostuk.
+- Niet als n8n-workflow.
+
+## Wat Claude ermee kan
+
+Drie handelingen (tools):
+
+| Tool | Invoer | Uitvoer |
+| --- | --- | --- |
+| `onderwerpen` | geen | Per pagina: naam, titel, wat de pagina dekt, voor welke periode ze geldt, wanneer ze is bijgewerkt |
+| `zoek` | een vraag; optioneel één onderwerp en het aantal resultaten (standaard 5, hooguit 10) | De best passende stukken tekst, elk met pagina, etiket en bronnen |
+| `lees_onderwerp` | de naam van een pagina | De hele pagina |
+
+Elk stuk tekst in een zoekresultaat heeft een etiket: **geldt nu** (uit Kern of Details), **historie** of **open vraag**. Zo presenteert Claude geen achterhaalde regel als geldend, en weet het wanneer de bronnen iets niet beantwoorden of elkaar tegenspreken.
+
+De server geeft Claude vaste instructies mee: noem bij elk antwoord de bron met link, zeg het als de kennisbank iets niet bevat, behandel "historie" en "open vraag" als zodanig, en geef geen juridisch advies. Elk resultaat vermeldt de datum waarop de pagina is bijgewerkt.
+
+Vindt `zoek` niets, dan zegt het dat en verwijst het naar `onderwerpen`. Een onbekende paginanaam bij `lees_onderwerp` geeft een foutmelding met de geldige namen.
+
+## Zoeken
+
+Op trefwoorden, zonder vectordatabase en zonder extern model. Redenen: geen sleutel, geen kosten, elke keer dezelfde uitkomst, en goed te testen. Voor ongeveer 40.000 woorden is zoeken op betekenis niet nodig.
+
+- Bij het starten leest de server de pagina's en deelt ze op in stukken: per kop, en daarbinnen per opsommingspunt, alinea of tabel. De lijst "Bronnen" onderaan een pagina wordt niet doorzocht.
+- De rangorde volgt BM25, de gangbare formule voor zoeken op trefwoorden: een zeldzaam woord telt zwaarder dan een veelvoorkomend woord. Woorden in de titel van de pagina tellen extra.
+- Woorden worden vergeleken in kleine letters en zonder accenten. Een zoekwoord van vier letters of meer vindt ook woorden waarin het voorkomt ("vergoeding" vindt "transitievergoeding").
+- Geen zoekbibliotheek: de formule is klein genoeg om zelf te schrijven en te testen.
+
+Bekende grens: een synoniem dat nergens in de tekst staat, wordt niet gevonden. Korte stammen zoals "tijd" of "uren" vinden daardoor ook niet-verwante woorden ("altijd", "kortdurend"). Claude kan dan een tweede zoekterm proberen of de lijst met onderwerpen gebruiken. De README legt uit bij welke omvang zoeken op betekenis wel loont.
+
+## Bronnen
+
+In de werkkopie verwijst elke bewering naar een bestand in het lokale archief: `(bron: docs/info/<pad>.md, <plek>)`. Dat archief is tekst van anderen en gaat niet mee.
+
+Een script (`publiceer-kennis`) maakt van de werkkopie de openbare pagina's:
+
+- Elke verwijzing naar het archief wordt een link naar het oorspronkelijke webadres, met de titel van de bron. Titel, adres en ophaaldatum staan bovenaan elk bestand in het archief.
+- De twee pagina's die niet meegaan worden overgeslagen. Verwijzingen ernaar in andere pagina's worden herschreven, zodat er geen dode verwijzing overblijft.
+- Verwijzingen naar `docs/kennis/` worden gewone paginanamen.
+- Kan het script een verwijzing niet omzetten, dan stopt het met een melding. Het raadt niet.
+
+De server leest alleen de openbare pagina's. Elk stuk tekst dat hij teruggeeft bevat de bronnen als link in de tekst, met titel, webadres en plek.
+
+## Mappen
+
+Regel: wat in `Projecten/Openbaar/` staat, mag naar buiten.
+
+Naar `<privémap>/` verhuizen:
+
+- `info/` (het archief) en `scrape/` (scripts en opgehaalde html)
+- `kennis/` als werkkopie, met alle 20 pagina's
+- `ontwerp/` (de documenten uit september) en `skill/`
+
+In `Projecten/Openbaar/Cao-connector/` staat daarna:
+
+```
+README.md  LICENSE  package.json  tsconfig.json
+assets/      logo, afbeelding voor de linkvoorvertoning, demo-beeld
+kennis/      de 18 openbare pagina's en een overzicht
+src/         de server
+scripts/     publiceer-kennis
+evals/       de testvragen
+tests/
+docs/        ontwerpen, plannen en de werkwijze van de kennisbank
+.github/     automatische test bij elke wijziging
+```
+
+De twee werkwijzen (`werkwijze-bronnen-verwerken.md` en `werkwijze-nalopen.md`) gaan opgeschoond mee in `docs/`: ze laten zien hoe de kennisbank is geschreven en nagelopen.
+
+## Kwaliteit en controle
+
+- **Testvragen:** ten minste 30 cao-vragen in gewone taal, zoals een intercedent ze zou stellen, elk met de pagina waar het antwoord hoort te staan. Ze worden geschreven voordat de zoekfunctie wordt afgesteld. De test faalt als de juiste pagina bij minder dan 90% van de vragen in de bovenste drie resultaten zit. De README vermeldt de gemeten score, ook hoe vaak de juiste pagina op één staat.
+- **Vangnet tegen lekken:** een test die faalt als in de openbare map een van deze dingen staat: een verwijzing naar `docs/info`, `docs/kennis`, interne bestanden of de naam van een intern hulpmiddel van de auteur, of een van de twee pagina's die niet meegaan. Het overzicht in `kennis/` wordt voor de openbare versie opnieuw geschreven, zonder namen van personen.
+- **Gewone tests:** opdelen van pagina's, omzetten van bronnen, de rangorde, en de drie tools van begin tot eind.
+- **Handmatig:** de server koppelen aan Claude Code en drie echte vragen stellen. Pas daarna heet het klaar.
+
+## Presentatie
+
+- **Logo:** een eigen logo als SVG, in een versie voor lichte en voor donkere achtergrond, dat ook klein leesbaar is. Gemaakt met de logo-skill; Tim kiest de richting.
+- **README in het Nederlands**, in deze volgorde: logo en één zin over wat het is, een demo-beeld van een echte vraag met antwoord en bron, starten in drie commando's, een voorbeeldvraag, hoe het werkt (met een schema), de gemeten kwaliteit, wat het niet doet, bronnen en auteursrecht, licentie.
+- **Demo-beeld:** een schermopname van een echte vraag aan Claude met de connector gekoppeld.
+- **Afbeelding voor de linkvoorvertoning** (1280 bij 640) met het logo, voor als de repo gedeeld wordt.
+- **Kleine tekenen van verzorging:** een badge voor de tests, een licentie, een vaste codestijl, en een korte beschrijving en onderwerpen voor de GitHub-pagina.
+
+## Veiligheid
+
+De server leest alleen, heeft geen sleutels en maakt geen verbinding met internet. Een paginanaam moet voorkomen in de lijst van geladen pagina's, dus er is geen weg naar andere bestanden. Een vraag is hooguit 500 tekens.
+
+## Auteursrecht en disclaimer
+
+De code krijgt de MIT-licentie. De kennispagina's zijn samenvattingen in eigen woorden met een link naar de bron; de bronnen blijven van hun rechthebbenden. README en server zeggen allebei dat dit geen juridisch advies is en noemen de datum van de kennis.
+
+## Techniek
+
+- TypeScript op Node 22.18 of hoger, met de officiële MCP-bibliotheek (`@modelcontextprotocol/sdk`) en `zod` voor de invoer van de tools. Verbinding via stdio. Node voert TypeScript vanaf die versie zelf uit, dus er is geen bouwstap: `node src/start.ts` start de server.
+- Tests met Vitest, zoals in een eerder project van de auteur. Geen andere afhankelijkheden zonder reden.
+- Indeling van `src/`: laden en opdelen van pagina's, zoeken, en de server met de drie tools, elk in een eigen bestand met een eigen test.
+- Git: een lokale repo, pas aangemaakt nadat het privémateriaal is verhuisd. Commits zonder Claude als medeauteur.
+
+## Niet in deze versie
+
+Online hosting, zoeken op betekenis, automatisch opnieuw scrapen, de ruwe bronnen in de repo (ook de wetsteksten), het bijwerken van de kennisbank in een intern hulpmiddel van de auteur, en een Engelse versie.
+
+## Apart te vragen aan Tim
+
+- Een repo op GitHub aanmaken en pushen.
+- De naam van de repo. Voorstel: `cao-connector`.
