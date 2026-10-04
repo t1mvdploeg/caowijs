@@ -27,3 +27,19 @@ test.each(bestanden.filter((naam) => naam !== "README.md"))(
     expect(zonderLink).toEqual([]);
   },
 );
+
+test.each(bestanden)(
+  "%s: elke .md-naam in de tekst is een pagina uit kennis/",
+  (naam) => {
+    const tekst = readFileSync(join(map, naam), "utf8").replace(
+      /\]\([^\s]*?\)(?=[\s,;.:)\]]|$)/g,
+      "]()",
+    );
+    const namen = [...tekst.matchAll(/[\w./-]*\.md\b/g)].map(
+      (treffer) => treffer[0],
+    );
+    expect(namen.filter((gevonden) => !bestanden.includes(gevonden))).toEqual(
+      [],
+    );
+  },
+);

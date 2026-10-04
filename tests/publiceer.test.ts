@@ -74,3 +74,14 @@ test("leesBron haalt titel en webadres uit de kop van een archiefbestand", () =>
     "https://www.abu.nl/app/uploads/2026/08/SFU-cao-2026.pdf",
   );
 });
+
+test("verboden past op de map docs/info, niet op een webadres met docs/infographic", () => {
+  expect(
+    verboden(
+      "https://download.belastingdienst.nl/belastingdienst/docs/infographic-x.pdf",
+    ),
+  ).toEqual([]);
+  expect(verboden("docs/info/x.md")).toHaveLength(1);
+  expect(verboden("in docs/info")).toHaveLength(1);
+  expect(verboden("docs/info-x")).toHaveLength(1);
+});
